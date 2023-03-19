@@ -5,7 +5,8 @@ import 'package:openai_client/openai_client.dart';
 import 'package:openai_client/src/model/openai_chat/chat_message.dart';
 
 Future<OpenAIConfiguration> loadConfigurationFromEnvFile() async {
-  final file = File('.env.json');
+  final home = Platform.environment['HOME'] ?? ".";
+  final file = File('$home/.config/gpt/env.json');
   final content = await file.readAsString();
   final json = jsonDecode(content) as Map<String, dynamic>;
 

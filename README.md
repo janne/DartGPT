@@ -3,7 +3,8 @@
 ## Setup
 
 - `dart pub get`
-- `cp env.json.template env.json` and update it with your [OpenAPI API key](https://platform.openai.com/account/api-keys).
+- `mkdir -p ~/.config/gpt`
+- `cp env.json.template ~/.config/gpt/env.json` and update it with your [OpenAPI API key](https://platform.openai.com/account/api-keys).
 - `dart compile exe dart_gpt.dart -o gpt`
 - `mv gpt <DIRECTORY IN YOUR PATH>`
 
