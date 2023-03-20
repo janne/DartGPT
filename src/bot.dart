@@ -16,19 +16,13 @@ class Bot {
     _memory.add(ChatMessage(role: "user", content: input));
 
     final count = MEMORY_LENGTH * 2 + 1;
-    final recentMemory = (_memory.length > count ? _memory.sublist(_memory.length - count) : _memory);
-    final content = recentMemory.map((m) => "${m.role}: ${m.content}").join("\n");
+    final messages = (_memory.length > count ? _memory.sublist(_memory.length - count) : _memory);
 
-    final message = ChatMessage(role: 'user', content: content);
-
-    final chatRequest = client.chat.create(
-      model: 'gpt-3.5-turbo',
-      messages: [message],
-    );
+    final chatRequest = client.chat.create(model: 'gpt-3.5-turbo', messages: messages);
     final chat = await chatRequest.data;
     final response = chat.choices.first.message.content.trim();
 
-    _memory.add(ChatMessage(role: "ai", content: response));
+    _memory.add(ChatMessage(role: "assistant", content: response));
 
     client.close();
   }
