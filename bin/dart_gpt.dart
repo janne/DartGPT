@@ -22,8 +22,23 @@ Future<void> dialog(Bot bot) async {
     final input = stdin.readLineSync(encoding: utf8);
     if (input == null) break;
     await bot.sendMessage(input);
-    print(bot.lastResponse());
+    print(lineBreak(bot.lastResponse()) + "\n");
   }
+}
+
+String lineBreak(String msg) {
+  return msg
+      .split("\n")
+      .join("\n ")
+      .split(" ")
+      .fold(<String>[""], (lines, word) {
+        if (lines.last.endsWith('\n')) return [...lines, word];
+        final newLine = "${lines.last} $word";
+        if (newLine.trim().length > 80) return [...lines, word];
+        return [...lines.sublist(0, lines.length - 1), newLine];
+      })
+      .map((s) => s.trimRight())
+      .join("\n");
 }
 
 Future<void> oneShot(Bot bot) async {
