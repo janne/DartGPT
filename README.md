@@ -5,7 +5,11 @@
 - `dart pub get`
 - `mkdir -p ~/.config/gpt`
 - `cp env.json.template ~/.config/gpt/env.json` and update it with your [OpenAPI API key](https://platform.openai.com/account/api-keys).
-- `dart compile exe dart_gpt.dart -o gpt`
+- `dart run`
+
+## Deploy
+
+- `dart compile exe bin/dart_gpt.dart -o gpt`
 - `mv gpt <DIRECTORY IN YOUR PATH>`
 
 ## Usage
@@ -20,7 +24,6 @@ or
 $ gpt
 Hey there!<Ctrl+D>
 ```
-
 
 ## Quote from ChatGPT
 
