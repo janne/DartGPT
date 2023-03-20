@@ -9,8 +9,7 @@
 
 ## Deploy
 
-- `dart compile exe bin/dart_gpt.dart -o gpt`
-- `mv gpt <DIRECTORY IN YOUR PATH>`
+- `dart compile exe bin/dart_gpt.dart -o /usr/local/bin/gpt`
 
 ## Usage
 
