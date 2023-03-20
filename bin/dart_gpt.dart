@@ -14,12 +14,11 @@ Future<String> loadAPIKey() async {
 Future<void> main(List<String> args) async {
   final bot = Bot(await loadAPIKey());
   await stdin.hasTerminal ? dialog(bot) : oneShot(bot);
-  bot.deinit();
 }
 
 Future<void> dialog(Bot bot) async {
   while (true) {
-    stdout.write("Human: ");
+    stdout.write("> ");
     final input = stdin.readLineSync(encoding: utf8);
     if (input == null) break;
     await bot.sendMessage(input);
@@ -31,7 +30,6 @@ Future<void> oneShot(Bot bot) async {
   final input = stdin.readLineSync(encoding: utf8);
   if (input == null) {
     print("No input, exiting.");
-    bot.deinit();
     exit(1);
   }
 
